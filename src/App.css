@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  border: 0.5rem solid blueviolet;
+  margin: 1rem;
+  padding: 2rem;
 }
 span{
   margin: 0.3rem;
