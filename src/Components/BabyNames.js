@@ -4,7 +4,7 @@ import FavoriteList from "./FavoriteList";
 import MainNameList from "./MainNameList";
 import InputNames from "./InputNames";
 
-const babyNames = () => {
+const BabyNames = () => {
   const [keyword, setKeyword] = useState("");
   const [isGender, setIsGender] = useState(false);
   const [favoriteBabyList, setFavoriteBabyList] = useState([]);
@@ -66,4 +66,4 @@ const babyNames = () => {
     </>
   );
 };
-export default babyNames;
+export default BabyNames;
