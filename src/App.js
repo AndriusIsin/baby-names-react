@@ -1,5 +1,5 @@
 import "./App.css";
-import BabyNames from "./BabyNames.js";
+import BabyNames from "./Components/BabyNames.js";
 function App() {
   return (
     <div className="App">
