@@ -4,6 +4,18 @@ import SortAscending from "./Sort";
 
 const babyNames = () => {
   const [keyword, setKeyword] = useState("");
+  const [favoriteBabyList, setFavoriteBabyList] = useState([]);
+  const [mainBabyList, setMainBabyList] = useState(babyNamesData);
+  const addToFavorite = (babyName) => {
+    setFavoriteBabyList([...favoriteBabyList, babyName]);
+    setMainBabyList(mainBabyList.filter((baby) => baby.name !== babyName.name));
+  };
+  const deleteFromFavorite = (babyName) => {
+    setMainBabyList([...mainBabyList, babyName]);
+    setFavoriteBabyList(
+      favoriteBabyList.filter((baby) => baby.name !== babyName.name)
+    );
+  };
   return (
     <>
       <input
@@ -16,8 +28,21 @@ const babyNames = () => {
           setKeyword(e.target.value);
         }}
       />
+      <h2>
+        Favorite List:
+        {favoriteBabyList.map((baby) => (
+          <span
+            onClick={() => {
+              deleteFromFavorite(baby);
+            }}
+            className={baby.sex === "f" ? "f-name" : "m-name"}
+          >
+            {baby.name}
+          </span>
+        ))}
+      </h2>
       <div className="names">
-        {babyNamesData
+        {mainBabyList
           .filter((baby) => {
             if (keyword === "") {
               return baby;
@@ -29,11 +54,16 @@ const babyNames = () => {
           })
           .sort(SortAscending)
           .map((babyName) => {
-            if (babyName.sex === "f") {
-              return <span className="f-name"> {babyName.name}</span>;
-            } else {
-              return <span className="m-name"> {babyName.name}</span>;
-            }
+            return (
+              <span
+                onClick={() => {
+                  addToFavorite(babyName);
+                }}
+                className={babyName.sex === "f" ? "f-name" : "m-name"}
+              >
+                {babyName.name}
+              </span>
+            );
           })}
       </div>
     </>
