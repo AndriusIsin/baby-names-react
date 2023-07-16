@@ -11,9 +11,10 @@ const MainNameList = ({ babyNamesData, keyword, addToFavorite }) => {
           }
         })
         .sort(SortAscending)
-        .map((babyName) => {
+        .map((babyName, index) => {
           return (
             <span
+              key={index}
               onClick={() => {
                 addToFavorite(babyName);
               }}
