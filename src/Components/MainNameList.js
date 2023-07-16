@@ -24,7 +24,9 @@ const MainNameList = ({ babyNamesData, keyword, addToFavorite }) => {
             </span>
           );
         })}
+      ;
     </div>
   );
 };
+//
 export default MainNameList;
